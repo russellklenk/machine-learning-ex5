@@ -52,7 +52,18 @@ error_val   = zeros(m, 1);
 %
 
 % ---------------------- Sample Solution ----------------------
-
+for i=1:m
+  % compute parameters theta for the training set.
+  % this may emit divide-by-zero warnings for extremely small 
+  % training set sizes (i=1, i=2).
+  X_train = X(1:i,:);
+  y_train = y(1:i);
+  theta   = trainLinearReg(X_train, y_train, lambda);
+  [J_train, g_train] = linearRegCostFunction(X_train, y_train, theta, 0);
+  [J_cval , g_cval ] = linearRegCostFunction(Xval   , yval   , theta, 0);
+  error_train(i) = J_train;
+  error_val(i) = J_cval;
+end
 
 
 

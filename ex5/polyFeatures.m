@@ -14,11 +14,9 @@ X_poly = zeros(numel(X), p);
 %               column of X contains the values of X to the p-th power.
 %
 % 
-
-
-
-
-
+% The syntax 1:p generates a row vector of values from 1..p.
+% X is a column vector of m x 1 values.
+X_poly = bsxfun(@power, X, 1:p);
 
 % =========================================================================
 
